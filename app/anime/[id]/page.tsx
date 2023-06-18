@@ -9,7 +9,7 @@ export default async function Anime({params}) {
 
   return (
     <>
-      <Title>{post.name}</Title>
+      <Title showBack={true}>{post.name}</Title>
       <h2 className='p-6'>{post.russian}</h2>
       
       <div className='p-6 flex'>
