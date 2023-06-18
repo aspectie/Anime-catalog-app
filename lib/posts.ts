@@ -1,11 +1,19 @@
-import axios from "axios";
-
-const api = axios.create({
-  baseURL: 'https://shikimori.one/api',
-});
+const baseURL = 'https://shikimori.one/api';
 
 export async function getPosts(params: any) {
-  const {data} = await api.get('animes', {params})
+  const url = new URL(`${baseURL}/animes`);
+
+  url.search = new URLSearchParams(params).toString();
+  const response = await fetch(url);
+  const data = await response.json();
+
+  return data
+}
+
+export async function getPostById(id: string) {
+  const url = new URL(`${baseURL}/animes/${id}`);
+  const response = await fetch(url);
+  const data = await response.json();
 
   return data
 }
