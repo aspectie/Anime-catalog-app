@@ -7,7 +7,7 @@ const navigation = [
   { name: 'Anime', href: '/anime' }
 ]
 
-function Navbar() {
+export function Navbar() {
   return (
     <div className="bg-gray-900">
       <div className="flex h-16 items-center justify-between">
@@ -35,5 +35,3 @@ function Navbar() {
     </div>
   )
 }
-
-export default Navbar

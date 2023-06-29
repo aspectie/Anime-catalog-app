@@ -1,4 +1,4 @@
-import Header from '@/components/layout/Header/Header'
+import { Navbar } from '@/components/layout/Navbar/Navbar'
 import './globals.css'
 
 export const metadata = {
@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
+        <Navbar />
         {children}
       </body>
     </html>

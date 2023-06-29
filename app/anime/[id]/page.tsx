@@ -1,7 +1,6 @@
 import React from 'react'
 
-import Title from '@/components/layout/Header/Title'
-import { BackButton } from '@/components/layout/Header/BackButton'
+import { Header } from '@/components/layout/Header/Header'
 
 import { getPostById } from '@/lib/posts'
 
@@ -23,8 +22,7 @@ export default async function Anime({ params }) {
 
   return (
     <>
-      <BackButton />
-      <Title>{name}</Title>
+      <Header isWithBackButton={true}>{name}</Header>
       <h2 className="p-6">{russian}</h2>
 
       <div className="p-6 flex">

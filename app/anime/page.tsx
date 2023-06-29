@@ -1,15 +1,13 @@
 import React from 'react'
 
-import Title from '@/components/layout/Header/Title'
-import { BackButton } from '@/components/layout/Header/BackButton'
+import { Header } from '@/components/layout/Header/Header'
 import { PostList } from './components/PostList'
 import { PostListSorting } from './components/PostListSorting'
 
 export default function Animes() {
   return (
     <>
-      <BackButton />
-      <Title>Top anime list</Title>
+      <Header>Top anime list</Header>
       <div
         className="
           py-6
