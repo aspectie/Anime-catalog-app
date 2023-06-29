@@ -1,10 +1,10 @@
 import React from 'react'
 
-import Link from 'next/link';
+import Link from 'next/link'
 
 const navigation = [
-  {name: 'Home', href: '/'},
-  {name: 'Anime', href: '/anime'}
+  { name: 'Home', href: '/' },
+  { name: 'Anime', href: '/anime' }
 ]
 
 function Header() {

@@ -1,12 +1,12 @@
-"use client";
+'use client'
 
-import React, { useState } from "react";
-import { Link } from "@/components/Link";
+import React, { useState } from 'react'
+import { Link } from '@/components/Link'
 
-export function AnimePost({ post }: any) {
-  const imgUrl = `https://shikimori.one/${post.image.original}`;
-  const [isHovered, setHovered] = useState(false);
-  const year = new Date(post.released_on);
+export function AnimePost({ id, score, name, image, released_on }: any) {
+  const imgUrl = `https://shikimori.one/${image.original}`
+  const [isHovered, setHovered] = useState(false)
+  const year = new Date(released_on)
 
   return (
     <div
@@ -18,7 +18,7 @@ export function AnimePost({ post }: any) {
       onMouseOver={() => setHovered(true)}
       onMouseOut={() => setHovered(false)}
     >
-      <Link url={`/anime/${post.id}`} className="h-full block">
+      <Link url={`/anime/${id}`} className="h-full block">
         <div className="relative">
           {isHovered && (
             <div
@@ -48,11 +48,11 @@ export function AnimePost({ post }: any) {
             justify-center
           "
           >
-            {post.score}
+            {score}
           </span>
           <img
             src={imgUrl}
-            alt={post.name}
+            alt={name}
             className="
               w-full
               h-fit
@@ -68,7 +68,7 @@ export function AnimePost({ post }: any) {
           font-medium
         "
         >
-          {post.name}
+          {name}
         </p>
         <p
           className="
@@ -79,5 +79,5 @@ export function AnimePost({ post }: any) {
         </p>
       </Link>
     </div>
-  );
+  )
 }

@@ -2,12 +2,7 @@
 
 import React from 'react'
 
-function Title({
-  children
-}: {
-  children: React.ReactNode
-}) {
-
+function Title({ children }: { children: React.ReactNode }) {
   return (
     <div className="bg-white shadow">
       <div className="mx-auto p-6 flex items-center">

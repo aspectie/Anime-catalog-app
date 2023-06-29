@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
-import Title from "@/components/layout/Header/Title";
-import { BackButton } from "@/components/layout/Header/BackButton";
-import { PostList } from "./components/postList";
-import { PostListSorting } from "./components/postListSorting";
+import Title from '@/components/layout/Header/Title'
+import { BackButton } from '@/components/layout/Header/BackButton'
+import { PostList } from './components/PostList'
+import { PostListSorting } from './components/PostListSorting'
 
 export default function Animes() {
   return (
@@ -37,5 +37,5 @@ export default function Animes() {
         <PostList />
       </div>
     </>
-  );
+  )
 }

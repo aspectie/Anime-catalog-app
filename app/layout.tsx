@@ -3,11 +3,11 @@ import './globals.css'
 
 export const metadata = {
   title: 'Shiki',
-  description: 'Anime app',
+  description: 'Anime app'
 }
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode
 }) {
