@@ -4,8 +4,9 @@ import React, { useState } from 'react'
 import Select from '@/components/ui/Select'
 import useSWR from 'swr'
 import { getSortedPosts } from '@/lib/posts'
+import { TOption } from '@/types/ui'
 
-const orderOptions = [
+const orderOptions: Array<TOption> = [
   {
     value: 'ranked',
     title: 'Rating'
@@ -27,8 +28,9 @@ const orderOptions = [
 export async function PostListSorting() {
   const { mutate } = useSWR('animePosts')
 
-  async function onChangeSelect(e) {
-    const value = e.target.value
+  async function onChangeSelect(event: React.ChangeEvent<HTMLSelectElement>) {
+    const target = event.target
+    const value = target.value
 
     const params = {
       limit: 20,

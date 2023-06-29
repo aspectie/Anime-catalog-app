@@ -6,6 +6,7 @@ import useSWR from 'swr'
 import { AnimePost } from './AnimePost'
 
 import { getTop20Posts } from '@/lib/posts'
+import { TAnimeItem } from '@/types/AnimeItem'
 
 export function PostList() {
   const { data: posts, error, isLoading } = useSWR('animePosts', getTop20Posts)
@@ -18,7 +19,7 @@ export function PostList() {
     return <div>Loading...</div>
   }
 
-  return posts.map(({ id, score, name, image, released_on }: any) => {
+  return posts.map(({ id, score, name, image, released_on }: TAnimeItem) => {
     return (
       <AnimePost
         key={id}

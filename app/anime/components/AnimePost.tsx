@@ -2,9 +2,10 @@
 
 import React, { useState } from 'react'
 import { Link } from '@/components/Link'
+import { TAnimeItem } from '@/types/AnimeItem'
 
-export function AnimePost({ id, score, name, image, released_on }: any) {
-  const imgUrl = `https://shikimori.one/${image.original}`
+export function AnimePost({ id, score, name, image, released_on }: TAnimeItem) {
+  const imgUrl = `https://shikimori.one/${image?.original}`
   const [isHovered, setHovered] = useState(false)
   const year = new Date(released_on)
 
@@ -18,7 +19,10 @@ export function AnimePost({ id, score, name, image, released_on }: any) {
       onMouseOver={() => setHovered(true)}
       onMouseOut={() => setHovered(false)}
     >
-      <Link url={`/anime/${id}`} className="h-full block">
+      <Link
+        url={`/anime/${id}`}
+        className="h-full block"
+      >
         <div className="relative">
           {isHovered && (
             <div

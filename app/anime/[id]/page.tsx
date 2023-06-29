@@ -4,7 +4,15 @@ import { Header } from '@/components/layout/Header/Header'
 
 import { getPostById } from '@/lib/posts'
 
-export default async function Anime({ params }) {
+import { TAnimeItem } from '@/types/AnimeItem'
+
+export default async function Anime({
+  params
+}: {
+  params: {
+    id: string
+  }
+}) {
   const {
     name,
     image,
@@ -16,9 +24,9 @@ export default async function Anime({ params }) {
     score,
     licensors,
     description
-  } = await getPostById(params.id)
+  }: TAnimeItem = await getPostById(params.id)
 
-  const imgUrl = `https://shikimori.one/${image.original}`
+  const imgUrl = `https://shikimori.one/${image?.original}`
 
   return (
     <>
@@ -35,7 +43,7 @@ export default async function Anime({ params }) {
         <div className="basis-4/5 ml-10">
           <p className="mb-3">
             <span className="mr-1">Genres:</span>
-            {genres.map((genre, index) => {
+            {genres?.map((genre, index) => {
               return (
                 <span className="mr-1">
                   {genre.name}
@@ -60,7 +68,7 @@ export default async function Anime({ params }) {
             <span className="mr-1">Score:</span>
             <span>{score}</span>
           </p>
-          {licensors.length > 0 && (
+          {licensors && licensors.length > 0 && (
             <p className="mb-3">
               <span className="mr-1">Licensors:</span>
               {licensors.map((licensor, index) => {
@@ -76,7 +84,7 @@ export default async function Anime({ params }) {
         </div>
       </div>
       <div className="p-6">
-        <h3 className="mb-2  text-xl">Description:</h3>
+        <h3 className="mb-2 text-xl">Description:</h3>
         <p className="mb-3">
           <span>{description}</span>
         </p>

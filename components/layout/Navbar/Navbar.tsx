@@ -2,9 +2,20 @@ import React from 'react'
 
 import Link from 'next/link'
 
+type TNavigation = {
+  name: string
+  href: string
+}
+
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Anime', href: '/anime' }
+  {
+    name: 'Home',
+    href: '/'
+  },
+  {
+    name: 'Anime',
+    href: '/anime'
+  }
 ]
 
 export function Navbar() {
@@ -12,7 +23,7 @@ export function Navbar() {
     <div className="bg-gray-900">
       <div className="flex h-16 items-center justify-between">
         <div className="ml-10 flex items-baseline space-x-4">
-          {navigation.map((item) => (
+          {navigation.map((item: TNavigation) => (
             <Link
               key={item.name}
               href={item.href}
