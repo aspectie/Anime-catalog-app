@@ -1,4 +1,4 @@
-import Title from '@/components/layout/Header/title'
+import Title from '@/components/layout/Header/Title'
 import Image from 'next/image'
 
 export default function Home() {

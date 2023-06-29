@@ -3,10 +3,11 @@
 import Form from 'react-bootstrap/Form';
 
 function Select({
-    options
+    options,
+    onChange
 }) {
   return (
-    <Form.Select size="sm">
+    <Form.Select size="sm" onChange={onChange}>
       {
         options.map((o) => {
           return (

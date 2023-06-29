@@ -1,7 +1,9 @@
-import Title from '@/components/layout/Header/title'
-import { getPostById} from '@/lib/posts'
+import React from 'react';
 
-import React, { useEffect } from 'react'
+import Title from '@/components/layout/Header/Title';
+import {BackButton} from "@/components/layout/Header/BackButton";
+
+import { getPostById } from '@/lib/posts';
 
 export default async function Anime({params}) {
   const post = await getPostById(params.id);
@@ -9,9 +11,10 @@ export default async function Anime({params}) {
 
   return (
     <>
-      <Title showBack={true}>{post.name}</Title>
+      <BackButton />
+      <Title>{post.name}</Title>
       <h2 className='p-6'>{post.russian}</h2>
-      
+
       <div className='p-6 flex'>
         <div className="basis-1/5">
           <img
