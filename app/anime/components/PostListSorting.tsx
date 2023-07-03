@@ -4,26 +4,7 @@ import React, { useState } from 'react'
 import { Select } from '@components'
 import useSWR from 'swr'
 import { getSortedPosts } from '@/lib/posts'
-import { TOption } from '@/types/ui'
-
-const orderOptions: Array<TOption> = [
-  {
-    value: 'ranked',
-    title: 'Rating'
-  },
-  {
-    value: 'popularity',
-    title: 'Popularity'
-  },
-  {
-    value: 'name',
-    title: 'Title'
-  },
-  {
-    value: 'aired_on',
-    title: 'Release date'
-  }
-]
+import { Constants } from '@/constants'
 
 export async function PostListSorting() {
   const { mutate } = useSWR('animePosts')
@@ -51,7 +32,7 @@ export async function PostListSorting() {
       "
       >
         <Select
-          options={orderOptions}
+          options={Constants.orderOptions}
           onChange={onChangeSelect}
         />
       </div>
