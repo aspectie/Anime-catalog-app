@@ -3,7 +3,7 @@
 import { TOption } from '@/types/ui'
 import Form from 'react-bootstrap/Form'
 
-function Select({
+export function Select({
   options,
   onChange
 }: {
@@ -28,5 +28,3 @@ function Select({
     </Form.Select>
   )
 }
-
-export default Select

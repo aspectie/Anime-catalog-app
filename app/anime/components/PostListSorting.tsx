@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import Select from '@/components/ui/Select'
+import { Select } from '@components'
 import useSWR from 'swr'
 import { getSortedPosts } from '@/lib/posts'
 import { TOption } from '@/types/ui'

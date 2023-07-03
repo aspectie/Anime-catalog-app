@@ -1,4 +1,4 @@
-import { Navbar } from '@/components/layout/Navbar/Navbar'
+import { Navbar } from '@components'
 import './globals.css'
 
 export const metadata = {

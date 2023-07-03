@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Link } from '@/components/Link'
+import { Link } from '@components'
 import { TAnimeItem } from '@/types/AnimeItem'
 
 export function AnimePost({ id, score, name, image, released_on }: TAnimeItem) {

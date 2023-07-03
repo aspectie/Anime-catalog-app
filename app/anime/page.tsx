@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Header } from '@/components/layout/Header/Header'
+import { Header } from '@components'
 import { PostList } from './components/PostList'
 import { PostListSorting } from './components/PostListSorting'
 
