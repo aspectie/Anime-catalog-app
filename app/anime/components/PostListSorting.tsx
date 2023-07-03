@@ -33,7 +33,7 @@ export async function PostListSorting() {
     const value = target.value
 
     const params = {
-      limit: 20,
+      limit: '20',
       order: value
     }
 

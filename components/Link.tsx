@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
-export function Link({ children, url, className }) {
+export function Link({
+  children,
+  url,
+  className
+}: {
+  children: ReactNode
+  url: string
+  className: string
+}) {
   return (
     <a
       href={url}
