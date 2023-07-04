@@ -37,7 +37,9 @@ export function PostListControls() {
     "
     >
       <PostListFilters onChange={onChangeHandler} />
-      <PostListSorter onChange={onChangeHandler} />
+      <div className="ml-10">
+        <PostListSorter onChange={onChangeHandler} />
+      </div>
     </div>
   )
 }

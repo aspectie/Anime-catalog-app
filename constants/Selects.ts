@@ -51,6 +51,95 @@ export const seasonOptions: Array<TOption> = [
   }
 ]
 
+export const statusOptions: Array<TOption> = [
+  {
+    value: 'anons',
+    title: 'anons'
+  },
+  {
+    value: 'ongoing',
+    title: 'ongoing'
+  },
+  {
+    value: 'released',
+    title: 'released'
+  },
+  {
+    value: 'latest',
+    title: 'latest'
+  }
+]
+
+export const kindOptions: Array<TOption> = [
+  {
+    value: 'tv',
+    title: 'tv'
+  },
+  {
+    value: 'movie',
+    title: 'movie'
+  },
+  {
+    value: 'ova',
+    title: 'ova'
+  },
+  {
+    value: 'ona',
+    title: 'ona'
+  },
+  {
+    value: 'special',
+    title: 'special'
+  },
+  {
+    value: 'music',
+    title: 'music'
+  },
+  {
+    value: 'tv_13',
+    title: 'tv_13'
+  },
+  {
+    value: 'tv_24',
+    title: 'tv_24'
+  },
+  {
+    value: 'tv_48',
+    title: 'tv_48'
+  }
+]
+
+export const ratingOptions: Array<TOption> = [
+  {
+    value: 'none',
+    title: 'none'
+  },
+  {
+    value: 'g',
+    title: 'g'
+  },
+  {
+    value: 'pg',
+    title: 'pg'
+  },
+  {
+    value: 'pg_13',
+    title: 'pg_13'
+  },
+  {
+    value: 'r',
+    title: 'r'
+  },
+  {
+    value: 'r_plus',
+    title: 'r_plus'
+  },
+  {
+    value: 'rx',
+    title: 'rx'
+  }
+]
+
 export const orderOptions: Array<TOption> = [
   {
     value: 'ranked',
