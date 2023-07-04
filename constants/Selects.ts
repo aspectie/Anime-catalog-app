@@ -2,8 +2,8 @@ import { TOption } from "@/types/ui";
 
 export const seasonOptions: Array<TOption> = [
   {
-    value: 'summer_2017',
-    title: 'Summer 2017'
+    value: 'summer_2023',
+    title: 'Summer 2023'
   },
   {
     value: 'winter_2023',

@@ -13,7 +13,7 @@ export async function getTop20Posts() {
   return response.json()
 }
 
-export async function getSortedPosts(params: Record<string, string>) {
+export async function getPosts(params: Record<string, string>) {
   const url = new URL(`${baseURL}/animes`);
   const a = new URLSearchParams(params)
 

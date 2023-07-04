@@ -7,15 +7,17 @@ import { Multiselect } from 'multiselect-react-dropdown'
 export function Select({
   options,
   isMultiple,
+  placeholder,
   onChange,
   onSelect,
   onRemove
 }: {
   options: Array<TOption>
   isMultiple?: boolean
+  placeholder?: string
   onChange?: React.ChangeEventHandler<HTMLSelectElement>
-  onSelect?: React.ChangeEventHandler<HTMLSelectElement>
-  onRemove?: React.ChangeEventHandler<HTMLSelectElement>
+  onSelect?: (selectedItems: Array<TOption>) => void
+  onRemove?: (selectedItems: Array<TOption>) => void
 }) {
   return (
     <div>
@@ -25,6 +27,9 @@ export function Select({
           onSelect={onSelect}
           onRemove={onRemove}
           displayValue="title"
+          avoidHighlightFirstOption
+          closeIcon="cancel"
+          placeholder={placeholder}
         />
       ) : (
         <Form.Select

@@ -1,29 +1,24 @@
 'use client'
 
 import React, { useState } from 'react'
+
 import { Select } from '@components'
-import useSWR from 'swr'
-import { getSortedPosts } from '@/lib/posts'
 import { Constants } from '@/constants'
 
-export async function PostListSorting() {
-  const { mutate } = useSWR('animePosts')
-
-  async function onChangeSelect(event: React.ChangeEvent<HTMLSelectElement>) {
+export function PostListSorter({
+  onChange
+}: {
+  onChange: (changedParams: TAnimesApiParams) => void
+}) {
+  function onChangeSelect(event: React.ChangeEvent<HTMLSelectElement>) {
     const target = event.target
     const value = target.value
 
-    const params = {
-      limit: '20',
-      order: value
-    }
-
-    const sortedPosts = await getSortedPosts(params)
-    await mutate(sortedPosts)
+    onChange({ order: value })
   }
 
   return (
-    <>
+    <div>
       <span>Sort by:</span>
       <div
         className="
@@ -36,6 +31,6 @@ export async function PostListSorting() {
           onChange={onChangeSelect}
         />
       </div>
-    </>
+    </div>
   )
 }
