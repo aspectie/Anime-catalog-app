@@ -1,7 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Link } from '@components'
+import Link from 'next/link'
+
 import { TAnimeItem } from '@/types/AnimeItem'
 
 export function AnimePost({ id, score, name, image, released_on }: TAnimeItem) {
@@ -20,7 +21,7 @@ export function AnimePost({ id, score, name, image, released_on }: TAnimeItem) {
       onMouseOut={() => setHovered(false)}
     >
       <Link
-        url={`/anime/${id}`}
+        href={`/anime/${id}`}
         className="h-full block"
       >
         <div className="relative">

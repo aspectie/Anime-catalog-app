@@ -1,4 +1,3 @@
-import { Link } from './Link';
 import { Select } from './ui/Select';
 import { Navbar } from './layout/Navbar/Navbar';
 import { BackButton } from "./layout/Header/BackButton";
@@ -8,6 +7,5 @@ export {
   BackButton,
   Header,
   Navbar,
-  Select,
-  Link
+  Select
 }
