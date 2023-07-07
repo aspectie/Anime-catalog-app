@@ -2,7 +2,7 @@ import { Navbar } from '@components'
 import './globals.css'
 
 export const metadata = {
-  title: 'Shiki',
+  title: 'Anime catalog',
   description: 'Anime app'
 }
 
