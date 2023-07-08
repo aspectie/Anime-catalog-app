@@ -1,12 +1,13 @@
 import React from 'react'
 
-import { Header } from '@components'
+import { Header, Navbar } from '@components'
 import { PostList } from './components/PostList'
 import { PostListControls } from './components/PostListControls'
 
 export default function Animes() {
   return (
     <>
+      <Navbar isSearchEnabled={true} />
       <Header>Top anime list</Header>
       <PostListControls />
       <div

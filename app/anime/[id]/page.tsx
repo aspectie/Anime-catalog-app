@@ -45,7 +45,10 @@ export default async function Anime({
             <span className="mr-1">Genres:</span>
             {genres?.map((genre, index) => {
               return (
-                <span className="mr-1">
+                <span
+                  className="mr-1"
+                  key={genre.name}
+                >
                   {genre.name}
                   {genres.length - 1 !== index ? ',' : '.'}
                 </span>
@@ -73,7 +76,10 @@ export default async function Anime({
               <span className="mr-1">Licensors:</span>
               {licensors.map((licensor, index) => {
                 return (
-                  <span className="mr-1">
+                  <span
+                    className="mr-1"
+                    key={licensor}
+                  >
                     {licensor}
                     {licensors.length - 1 !== index ? ',' : '.'}
                   </span>

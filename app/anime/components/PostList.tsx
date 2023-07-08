@@ -5,11 +5,19 @@ import useSWR from 'swr'
 
 import { AnimePost } from './AnimePost'
 
-import { getTop20Posts } from '@/lib/posts'
+import { getPosts } from '@/lib/posts'
 import { TAnimeItem } from '@/types/AnimeItem'
 
 export function PostList() {
-  const { data: posts, error, isLoading } = useSWR('animePosts', getTop20Posts)
+  async function getPostsWithoutKey() {
+    return await getPosts()
+  }
+
+  const {
+    data: posts,
+    error,
+    isLoading
+  } = useSWR('animePosts', getPostsWithoutKey)
 
   if (error) {
     return <div>{error}</div>

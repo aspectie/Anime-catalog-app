@@ -1,23 +1,25 @@
 const baseURL = 'https://shikimori.one/api';
-
-export async function getTop20Posts() {
-  const url = new URL(`${baseURL}/animes`);
-
-  url.search = new URLSearchParams({
-    limit: '20',
-    order: 'ranked'
-  }).toString();
-
-  const response = await fetch(url);
-
-  return response.json()
+const defaultParams = {
+  limit: '20',
+  order: 'ranked'
 }
 
-export async function getPosts(params: Record<string, string>) {
+export async function getPosts(params?: Record<string, string>) {
   const url = new URL(`${baseURL}/animes`);
-  const a = new URLSearchParams(params)
+
+  if (!params) {
+    params = defaultParams
+  }
+  if (!params.limit) {
+    params.limit = defaultParams.limit
+  }
+  if (!params.order) {
+    params.order = defaultParams.order
+  }
+
 
   url.search = new URLSearchParams(params).toString();
+  
   const response = await fetch(url);
 
   return response.json()

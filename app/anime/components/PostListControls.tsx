@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import useSWR from 'swr'
 
 import { PostListFilters } from './PostListFilters'
@@ -12,17 +12,24 @@ export function PostListControls() {
 
   const { mutate } = useSWR('animePosts')
 
+  const didMountRef = useRef(false)
+
   const onChangeHandler = (changedParams: TAnimesApiParams) => {
     setParams({ ...params, ...changedParams })
   }
 
   useEffect(() => {
-    const getPostsCallback = async () => {
+    const updatePosts = async () => {
       const data = await getPosts(params)
 
       mutate(data)
     }
-    getPostsCallback()
+
+    if (didMountRef.current) {
+      updatePosts()
+    }
+
+    didMountRef.current = true
   }, [params])
 
   return (
