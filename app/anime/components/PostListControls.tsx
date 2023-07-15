@@ -1,16 +1,15 @@
 'use client'
 
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import useSWR from 'swr'
+import React, { useEffect, useRef, useState } from 'react'
+import { useQueryClient } from '@tanstack/react-query'
 
+import { getPosts } from '@/lib/posts'
 import { PostListFilters } from './PostListFilters'
 import { PostListSorter } from './PostListSorter'
-import { getPosts } from '@/lib/posts'
 
 export function PostListControls() {
   const [params, setParams] = useState({ limit: '20', order: 'ranked' })
-
-  const { mutate } = useSWR('animePosts')
+  const queryClient = useQueryClient()
 
   const didMountRef = useRef(false)
 
@@ -22,7 +21,9 @@ export function PostListControls() {
     const updatePosts = async () => {
       const data = await getPosts(params)
 
-      mutate(data)
+      queryClient.setQueryData(['animePosts', 'infinite'], () => ({
+        pages: [data]
+      }))
     }
 
     if (didMountRef.current) {

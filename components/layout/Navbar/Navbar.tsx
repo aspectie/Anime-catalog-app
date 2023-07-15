@@ -1,10 +1,9 @@
 'use client'
 
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
-import useSWR from 'swr'
+import { useQueryClient } from '@tanstack/react-query'
 import debounce from 'lodash.debounce'
 
 import { Search } from '@components'
@@ -27,9 +26,9 @@ const navigation = [
 ]
 
 export function Navbar({ isSearchEnabled }: { isSearchEnabled?: boolean }) {
-  const { mutate } = useSWR('animePosts')
   const [params, setParams] = useState(useParams())
   const didMountRef = useRef(false)
+  const queryClient = useQueryClient()
 
   function onChange(event) {
     const value = event.target.value
@@ -42,7 +41,9 @@ export function Navbar({ isSearchEnabled }: { isSearchEnabled?: boolean }) {
     const updatePosts = async () => {
       const data = await getPosts(params)
 
-      mutate(data)
+      queryClient.setQueryData(['animePosts', 'infinite'], () => ({
+        pages: [data]
+      }))
     }
 
     if (didMountRef.current) {

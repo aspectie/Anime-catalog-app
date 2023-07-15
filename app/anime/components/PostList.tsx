@@ -1,42 +1,52 @@
 'use client'
 
 import React from 'react'
-import useSWR from 'swr'
 
-import { AnimePost } from './AnimePost'
+import { Post } from './Post'
 
 import { getPosts } from '@/lib/posts'
 import { TAnimeItem } from '@/types/AnimeItem'
+import { useInfiniteQuery } from '@tanstack/react-query'
 
 export function PostList() {
-  async function getPostsWithoutKey() {
-    return await getPosts()
-  }
-
   const {
-    data: posts,
+    data,
     error,
-    isLoading
-  } = useSWR('animePosts', getPostsWithoutKey)
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+    isFetchingNextPage,
+    status
+  } = useInfiniteQuery({
+    queryKey: ['animePosts', 'infinite'],
+    queryFn: () => getPosts(),
+    getNextPageParam: (lastPage, pages) => lastPage.nextCursor
+  })
 
-  if (error) {
-    return <div>{error}</div>
+  if (status === 'error') {
+    return <div>{error.message}</div>
   }
 
-  if (isLoading) {
+  if (status === 'loading') {
     return <div>Loading...</div>
   }
 
-  return posts.map(({ id, score, name, image, released_on }: TAnimeItem) => {
-    return (
-      <AnimePost
-        key={id}
-        id={id}
-        score={score}
-        name={name}
-        image={image}
-        released_on={released_on}
-      />
-    )
-  })
+  return (
+    <>
+      {data?.pages.map((group, i) => (
+        <React.Fragment key={i}>
+          {group.map(({ id, score, name, image, released_on }: TAnimeItem) => (
+            <Post
+              key={id}
+              id={id}
+              score={score}
+              name={name}
+              image={image}
+              released_on={released_on}
+            />
+          ))}
+        </React.Fragment>
+      ))}
+    </>
+  )
 }

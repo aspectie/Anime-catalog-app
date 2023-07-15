@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import { TAnimeItem } from '@/types/AnimeItem'
 
-export function AnimePost({ id, score, name, image, released_on }: TAnimeItem) {
+export function Post({ id, score, name, image, released_on }: TAnimeItem) {
   const imgUrl = `https://shikimori.one/${image?.original}`
   const [isHovered, setHovered] = useState(false)
   const year = new Date(released_on)

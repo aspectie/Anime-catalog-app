@@ -12,14 +12,10 @@
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@types/node": "20.3.0",
-    "@types/react": "18.2.11",
-    "@types/react-dom": "18.2.5",
+    "@tanstack/react-query": "^4.29.19",
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
-    "eslint": "8.42.0",
-    "eslint-config-next": "13.4.5",
     "lodash.debounce": "^4.0.8",
     "multiselect-react-dropdown": "^2.0.25",
     "next": "13.4.5",
@@ -27,11 +23,18 @@
     "react": "18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "18.2.0",
-    "swr": "^2.2.0",
-    "tailwindcss": "3.3.2",
-    "typescript": "5.1.3"
+    "tailwindcss": "3.3.2"
   },
   "devDependencies": {
-    "prettier": "^2.8.8"
+    "@tanstack/eslint-plugin-query": "^4.29.9",
+    "@tanstack/react-query-devtools": "^4.29.19",
+    "@types/lodash.debounce": "^4.0.7",
+    "@types/node": "20.3.0",
+    "@types/react": "18.2.11",
+    "@types/react-dom": "18.2.5",
+    "eslint": "^8.45.0",
+    "eslint-config-next": "13.4.5",
+    "prettier": "^2.8.8",
+    "typescript": "^5.1.6"
   }
 }
