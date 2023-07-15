@@ -6,9 +6,11 @@ export default function Home() {
     <>
       <Navbar />
       <Header>Home</Header>
-      <main className="p-6">
-        <h1>Home body</h1>
-      </main>
+      <div className="container">
+        <main className="p-6">
+          <h1>Home body</h1>
+        </main>
+      </div>
     </>
   )
 }

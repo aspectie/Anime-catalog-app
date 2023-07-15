@@ -31,8 +31,35 @@ export default async function Anime({
   return (
     <>
       <Header isWithBackButton={true}>{name}</Header>
-      <h2 className="p-6">{russian}</h2>
+      <div className="container">
+        <h2 className="p-6">{russian}</h2>
+        <Post
+          imgUrl={imgUrl}
+          genres={genres}
+          episodes={episodes}
+          kind={kind}
+          status={status}
+          score={score}
+          licensors={licensors}
+          description={description}
+        />
+      </div>
+    </>
+  )
+}
 
+const Post = ({
+  imgUrl,
+  genres,
+  episodes,
+  kind,
+  status,
+  score,
+  licensors,
+  description
+}: TAnimeItem & { imgUrl: string }) => {
+  return (
+    <>
       <div className="p-6 flex">
         <div className="basis-1/5">
           <img

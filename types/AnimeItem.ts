@@ -1,7 +1,7 @@
 export type TAnimeItem = {
-  id: number,
-  released_on: string,
-  name: string,
+  id?: number,
+  released_on?: string,
+  name?: string,
   image?: TImage,
   russian?: string,
   genres?: Array<TGenre>,

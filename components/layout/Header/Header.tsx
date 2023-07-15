@@ -11,8 +11,8 @@ export function Header({
   isWithBackButton?: boolean
 }) {
   return (
-    <div className="bg-white shadow">
-      <div className="mx-auto p-6 flex items-center">
+    <div className="container">
+      <div className="mx-auto p-6 flex items-center ">
         {isWithBackButton && <BackButton />}
         <h1 className="text-3xl font-bold text-gray-900">{children}</h1>
       </div>

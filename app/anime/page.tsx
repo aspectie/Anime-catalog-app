@@ -9,9 +9,10 @@ export default function Animes() {
     <>
       <Navbar isSearchEnabled={true} />
       <Header>Top anime list</Header>
-      <PostListControls />
-      <div
-        className="
+      <div className="container">
+        <PostListControls />
+        <div
+          className="
           grid
           gap-10
           xl:grid-cols-6
@@ -23,8 +24,9 @@ export default function Animes() {
           sm:px-6
           lg:px-8
         "
-      >
-        <PostList />
+        >
+          <PostList />
+        </div>
       </div>
     </>
   )

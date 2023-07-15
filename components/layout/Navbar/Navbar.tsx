@@ -58,9 +58,9 @@ export function Navbar({ isSearchEnabled }: { isSearchEnabled?: boolean }) {
   }, [params])
 
   return (
-    <div className="bg-gray-900">
-      <div className="flex h-16 items-center justify-between">
-        <div className="ml-10 flex items-baseline space-x-4">
+    <div className="bg-gray-900 ">
+      <div className="flex h-16 items-center justify-between container">
+        <div className="ml-3 flex items-baseline space-x-4 ">
           {navigation.map((item: TNavigation) => (
             <Link
               key={item.name}
