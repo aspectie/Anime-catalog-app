@@ -1,17 +1,41 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 
 import { TAnimeItem } from '@/types/AnimeItem'
 
-export function Post({ id, score, name, image, released_on }: TAnimeItem) {
-  const imgUrl = `https://shikimori.one/${image?.original}`
+export function Post({
+  id,
+  score,
+  name,
+  image,
+  aired_on,
+  isLast,
+  onIntersect
+}: TAnimeItem & { isLast: boolean; onIntersect: () => void }) {
   const [isHovered, setHovered] = useState(false)
-  const year = new Date(released_on)
+  const postRef = useRef(null)
+
+  const imgUrl = `https://shikimori.one/${image?.original}`
+  const year = aired_on ? new Date(aired_on) : null
+
+  useEffect(() => {
+    if (!postRef?.current) return
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (isLast && entry.isIntersecting) {
+        onIntersect()
+        observer.unobserve(entry.target)
+      }
+    })
+
+    observer.observe(postRef.current)
+  }, [isLast])
 
   return (
     <div
+      ref={postRef}
       className="
       hover:text-amber-600
       hover:translate-y-2
@@ -75,13 +99,15 @@ export function Post({ id, score, name, image, released_on }: TAnimeItem) {
         >
           {name}
         </p>
-        <p
-          className="
+        {year && (
+          <p
+            className="
           font-normal
         "
-        >
-          ({year.getFullYear()})
-        </p>
+          >
+            ({year.getFullYear()})
+          </p>
+        )}
       </Link>
     </div>
   )
