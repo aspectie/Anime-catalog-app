@@ -4,6 +4,13 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useQueryClient } from '@tanstack/react-query'
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
 import debounce from 'lodash.debounce'
 
 import { Search } from '@components'
@@ -30,7 +37,7 @@ export function Navbar({ isSearchEnabled }: { isSearchEnabled?: boolean }) {
   const didMountRef = useRef(false)
   const queryClient = useQueryClient()
 
-  function onChange(event) {
+  function onChange(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value
     setParams({ search: value })
   }
@@ -86,7 +93,45 @@ export function Navbar({ isSearchEnabled }: { isSearchEnabled?: boolean }) {
             />
           )}
         </div>
+        <AuthControls />
       </div>
+    </div>
+  )
+}
+
+function AuthControls() {
+  return (
+    <div>
+      <SignedOut>
+        <SignInButton mode="modal">
+          <button
+            className="
+                  text-gray-300 
+                  text-sm
+                  font-medium
+                  hover:text-amber-400
+                "
+          >
+            Sign in
+          </button>
+        </SignInButton>
+        <SignUpButton mode="modal">
+          <button
+            className="
+                  ml-4
+                  text-gray-300 
+                  text-sm
+                  font-medium
+                  hover:text-amber-400
+                "
+          >
+            Sign up
+          </button>
+        </SignUpButton>
+      </SignedOut>
+      <SignedIn>
+        <UserButton afterSignOutUrl="/" />
+      </SignedIn>
     </div>
   )
 }
