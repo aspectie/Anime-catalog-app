@@ -8,7 +8,7 @@ export function Search({
   onChange
 }: {
   placeholder: string
-  onChange: () => void
+  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
 }) {
   return (
     <div>
