@@ -29,6 +29,10 @@ const navigation = [
   {
     name: 'Anime',
     href: '/anime'
+  },
+  {
+    name: 'Watch list',
+    href: '/watch-list'
   }
 ]
 
