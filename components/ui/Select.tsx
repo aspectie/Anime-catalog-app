@@ -8,6 +8,7 @@ export function Select({
   options,
   isMultiple,
   placeholder,
+  value,
   onChange,
   onSelect,
   onRemove
@@ -15,6 +16,7 @@ export function Select({
   options: Array<TOption>
   isMultiple?: boolean
   placeholder?: string
+  value?: string | number | string[]
   onChange?: React.ChangeEventHandler<HTMLSelectElement>
   onSelect?: (selectedItems: Array<TOption>) => void
   onRemove?: (selectedItems: Array<TOption>) => void
@@ -33,6 +35,7 @@ export function Select({
         />
       ) : (
         <Form.Select
+          value={value}
           size="sm"
           onChange={onChange}
         >

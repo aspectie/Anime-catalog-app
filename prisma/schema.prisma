@@ -7,3 +7,10 @@ datasource db {
   url = env("DATABASE_URL")
   relationMode = "prisma"
 }
+
+model WatchList {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  watchId   String
+  status    String
+}

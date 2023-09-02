@@ -161,7 +161,7 @@ export const orderOptions: Array<TOption> = [
 
 export const watchStatusOptions: Array<TOption> = [
   {
-    value: 'null',
+    value: '',
     title: 'Add to list'
   },
   {

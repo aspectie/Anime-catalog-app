@@ -14,7 +14,7 @@ import {
 import debounce from 'lodash.debounce'
 
 import { Search } from '@components'
-import { getPosts } from '@/lib/posts'
+import { getPosts } from '@/actions/get-posts'
 
 type TNavigation = {
   name: string

@@ -1,17 +1,17 @@
 import React from 'react'
 
+import { TAnimeItem } from '@/types/AnimeItem'
+
 import { Header } from '@components'
 import { Post } from './components/Post'
 
-import { getPostById } from '@/lib/posts'
-
-import { TAnimeItem } from '@/types/AnimeItem'
+import { getPostById } from '@/actions/get-post-by-id'
 
 export default async function Anime({
   params
 }: {
   params: {
-    id: string
+    id: number
   }
 }) {
   const {
@@ -35,6 +35,7 @@ export default async function Anime({
       <div className="container">
         <h2 className="p-6">{russian}</h2>
         <Post
+          id={params.id}
           imgUrl={imgUrl}
           genres={genres}
           episodes={episodes}

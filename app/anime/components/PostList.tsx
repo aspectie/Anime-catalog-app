@@ -1,12 +1,13 @@
 'use client'
 
 import React, { useState } from 'react'
+import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query'
+
+import { TAnimeItem } from '@/types/AnimeItem'
 
 import { Post } from './Post'
 
-import { getPosts } from '@/lib/posts'
-import { TAnimeItem } from '@/types/AnimeItem'
-import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query'
+import { getPosts } from '@/actions/get-posts'
 
 export function PostList() {
   const [currentPage, setCurrentPage] = useState(1)

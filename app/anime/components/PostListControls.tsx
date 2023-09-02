@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
 
-import { getPosts } from '@/lib/posts'
+import { getPosts } from '@/actions/get-posts'
 import { PostListFilters } from './PostListFilters'
 import { PostListSorter } from './PostListSorter'
 
