@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { TAnimeItem } from '@/types/AnimeItem'
-
 import { Header } from '@components'
 import { Post } from './components/Post'
 
@@ -14,36 +12,25 @@ export default async function AnimePage({
     id: number
   }
 }) {
-  const {
-    name,
-    image,
-    russian,
-    genres,
-    episodes,
-    kind,
-    status,
-    score,
-    licensors,
-    description
-  }: TAnimeItem = await getPostById(params.id)
+  const post = await getPostById(params.id)
 
-  const imgUrl = `https://shikimori.one/${image?.original}`
+  const imgUrl = `https://shikimori.one/${post?.image?.original}`
 
   return (
     <>
-      <Header isWithBackButton={true}>{name}</Header>
+      <Header isWithBackButton={true}>{post?.name}</Header>
       <div className="container">
-        <h2 className="p-6">{russian}</h2>
+        <h2 className="p-6">{post?.russian}</h2>
         <Post
           id={params.id}
           imgUrl={imgUrl}
-          genres={genres}
-          episodes={episodes}
-          kind={kind}
-          status={status}
-          score={score}
-          licensors={licensors}
-          description={description}
+          genres={post?.genres}
+          episodes={post?.episodes}
+          kind={post?.kind}
+          status={post?.status}
+          score={post?.score}
+          licensors={post?.licensors}
+          description={post?.description}
         />
       </div>
     </>

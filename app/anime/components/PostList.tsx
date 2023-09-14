@@ -24,8 +24,7 @@ export function PostList() {
     status: string
   } = useInfiniteQuery({
     queryKey: ['animePosts', 'infinite'],
-    queryFn: ({ pageParam = 1 }) => getPosts({ page: pageParam }),
-    getNextPageParam: (lastPage, pages) => lastPage.nextCursor
+    queryFn: ({ pageParam = 1 }) => getPosts({ page: pageParam })
   })
 
   if (status === 'error') {

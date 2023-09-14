@@ -3,14 +3,14 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
 model WatchList {
-  id        Int      @id @default(autoincrement())
-  userId    String
-  watchId   String
-  status    String
+  id      Int    @id @default(autoincrement())
+  userId  String
+  status  String
+  watchId Int
 }

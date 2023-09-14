@@ -1,7 +1,7 @@
 export type TWatchItem = {
   id: number;
   userId: string;
-  watchId: string;
+  watchId: number;
   status: TWatchStatus;
 }
 

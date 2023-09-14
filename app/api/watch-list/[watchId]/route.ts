@@ -5,7 +5,7 @@ import prismadb from "@/lib/prismadb";
 
 export async function GET(
   req: Request,
-  { params }: { params: { watchId: string } }
+  { params }: { params: { watchId: number } }
 ) {
   try {   
     const { userId } = auth();
@@ -30,7 +30,7 @@ export async function GET(
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { watchId: string } }
+  { params }: { params: { watchId: number } }
 ) {
   try {   
     const { userId } = auth();
@@ -62,7 +62,7 @@ export async function PATCH(
 
 export async function PUT(
   req: Request,
-  { params }: { params: { watchId: string } }
+  { params }: { params: { watchId: number } }
 ) {
   try {
     const { userId } = auth()
@@ -111,7 +111,7 @@ export async function PUT(
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { watchId: string } }
+  { params }: { params: { watchId: number } }
 ) {
   try {
     const { userId } = auth()

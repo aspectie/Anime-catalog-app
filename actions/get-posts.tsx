@@ -1,10 +1,14 @@
+import { TAnimeItem } from '@/types/AnimeItem'
+
 const baseURL = 'https://shikimori.one/api'
 const defaultParams = {
   limit: '20',
   order: 'ranked'
 }
 
-export async function getPosts(params?: Record<string, string>) {
+export async function getPosts(
+  params?: Record<string, string>
+): Promise<TAnimeItem[] | null> {
   const url = new URL(`${baseURL}/animes`)
 
   if (!params) {
@@ -20,6 +24,10 @@ export async function getPosts(params?: Record<string, string>) {
   url.search = new URLSearchParams(params).toString()
 
   const response = await fetch(url)
+
+  if (response.status !== 200) {
+    return null
+  }
 
   return response.json()
 }
