@@ -5,20 +5,20 @@ import { useQuery } from '@tanstack/react-query'
 import { Col, Nav, Row, Tab } from 'react-bootstrap'
 
 import { TColumn } from '@/types/ui'
-import { TAnimeItem } from '@/types/AnimeItem'
-import { TWatchStatus } from '@/types/WatchItem'
+import { TAnimeItem } from '@/types/anime-item'
+import { TWatchStatus } from '@/types/watch-item'
 
-import { tabs } from '@/constants/Tabs'
+import { tabs } from '@/constants/tabs'
 
 import { getPostById } from '@/actions/get-post-by-id'
 import { getWatchList } from '@/actions/get-watch-list'
-import { WatchTable } from './watchTable'
+import { WatchTable } from './watch-table'
 
-export type animeKey =
+export type TWatchColumnName =
   | keyof Omit<TAnimeItem, 'image' | 'genres' | 'licensors'>
   | 'watchStatus'
 
-export type TWatchColumn = TColumn<{ name: animeKey; title: string }>
+export type TWatchColumn = TColumn<{ name: TWatchColumnName; title: string }>
 export type TWatchRecord = TAnimeItem & { watchStatus: TWatchStatus }
 
 const columns: TWatchColumn[] = [
@@ -33,7 +33,7 @@ const columns: TWatchColumn[] = [
 ]
 
 export function WatchTabs() {
-  async function getWatchAnimes() {
+  async function getWatchRecords() {
     const watchItems = await getWatchList()
 
     if (!watchItems) {
@@ -42,7 +42,7 @@ export function WatchTabs() {
 
     return Promise.all(
       watchItems.map(async (item) => {
-        const post = await getPostById(Number(item.watchId))
+        const post = await getPostById(item.watchId)
 
         return { ...post, watchStatus: item.status }
       })
@@ -50,8 +50,8 @@ export function WatchTabs() {
   }
 
   const { data, isFetched } = useQuery({
-    queryKey: [`watchAnimes`],
-    queryFn: () => getWatchAnimes()
+    queryKey: [`watchRecords`],
+    queryFn: () => getWatchRecords()
   })
 
   return (

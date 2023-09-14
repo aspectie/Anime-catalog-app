@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { Header, Navbar } from '@components'
-import { PostList } from './components/PostList'
-import { PostListControls } from './components/PostListControls'
+import { PostList } from './components/post-list'
+import { PostListControls } from './components/post-list-controls'
 
 export default function AnimesPage() {
   return (

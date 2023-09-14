@@ -1,4 +1,4 @@
-import { TWatchStatus } from "@/types/WatchItem";
+import { TWatchStatus } from "@/types/watch-item";
 import { TTab } from "@/types/ui";
 
 export const tabs: TTab<{ value: TWatchStatus; title: string }>[] = [

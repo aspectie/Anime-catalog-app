@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Header } from '@components'
-import { Post } from './components/Post'
+import { Post } from './components/post'
 
 import { getPostById } from '@/actions/get-post-by-id'
 
@@ -9,10 +9,10 @@ export default async function AnimePage({
   params
 }: {
   params: {
-    id: number
+    id: string
   }
 }) {
-  const post = await getPostById(params.id)
+  const post = await getPostById(Number(params.id))
 
   const imgUrl = `https://shikimori.one/${post?.image?.original}`
 
@@ -22,7 +22,7 @@ export default async function AnimePage({
       <div className="container">
         <h2 className="p-6">{post?.russian}</h2>
         <Post
-          id={params.id}
+          id={Number(params.id)}
           imgUrl={imgUrl}
           genres={post?.genres}
           episodes={post?.episodes}

@@ -4,8 +4,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
 
 import { getPosts } from '@/actions/get-posts'
-import { PostListFilters } from './PostListFilters'
-import { PostListSorter } from './PostListSorter'
+import { PostListFilters } from './post-list-filters'
+import { PostListSorter } from './post-list-sorters'
 
 export function PostListControls() {
   const [params, setParams] = useState({ limit: '20', order: 'ranked' })

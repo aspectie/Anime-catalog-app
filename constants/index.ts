@@ -1,5 +1,5 @@
-import * as Selects from './Selects'
-import * as Tabs from './Tabs'
+import * as Selects from './selects'
+import * as Tabs from './tabs'
 
 export const Constants = {
   ...Selects,

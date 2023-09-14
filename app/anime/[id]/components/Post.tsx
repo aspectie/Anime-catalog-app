@@ -3,7 +3,7 @@
 import { useUser } from '@clerk/nextjs'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
-import { TAnimeItem } from '@/types/AnimeItem'
+import { TAnimeItem } from '@/types/anime-item'
 
 import { Select } from '@components'
 import { Constants } from '@/constants'

@@ -3,9 +3,9 @@
 import React, { useState } from 'react'
 import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query'
 
-import { TAnimeItem } from '@/types/AnimeItem'
+import { TAnimeItem } from '@/types/anime-item'
 
-import { Post } from './Post'
+import { Post } from './post'
 
 import { getPosts } from '@/actions/get-posts'
 

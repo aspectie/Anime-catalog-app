@@ -1,4 +1,4 @@
-import { TAnimeItem } from '@/types/AnimeItem'
+import { TAnimeItem } from '@/types/anime-item'
 
 const baseURL = 'https://shikimori.one/api'
 

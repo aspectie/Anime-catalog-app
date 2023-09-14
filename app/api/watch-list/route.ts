@@ -8,7 +8,10 @@ export async function POST(
   try {
     const { userId } = auth()
     const body = await req.json()
-    const { watchId, status } = body;
+    const { watchId, status }: { 
+      watchId: string,
+      status: string
+    } = body;
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 403 });
@@ -17,7 +20,7 @@ export async function POST(
     const newRecord = await prismadb.watchList.create({
       data: {
         status,
-        watchId,
+        watchId: Number(watchId),
         userId
       }
     });
@@ -25,7 +28,7 @@ export async function POST(
     return NextResponse.json(newRecord);
   } catch (error) {
     console.log('watch-list_POST', error)
-    throw new NextResponse('Internal error', {status: 500})
+    throw new NextResponse('Internal error', { status: 500 })
   }
 }
 
@@ -48,6 +51,6 @@ export async function GET(
     return NextResponse.json(records);
   } catch (error) {
     console.log('watch-list_GET', error)
-    throw new NextResponse('Internal error', {status: 500})
+    throw new NextResponse('Internal error', { status: 500 })
   }
 }
