@@ -1,7 +1,7 @@
 import { Header } from '@components'
 import { Navbar } from '@components'
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <Navbar />

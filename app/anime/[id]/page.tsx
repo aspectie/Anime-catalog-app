@@ -7,7 +7,7 @@ import { Post } from './components/Post'
 
 import { getPostById } from '@/actions/get-post-by-id'
 
-export default async function Anime({
+export default async function AnimePage({
   params
 }: {
   params: {

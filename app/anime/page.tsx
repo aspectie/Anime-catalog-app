@@ -4,7 +4,7 @@ import { Header, Navbar } from '@components'
 import { PostList } from './components/PostList'
 import { PostListControls } from './components/PostListControls'
 
-export default function Animes() {
+export default function AnimesPage() {
   return (
     <>
       <Navbar isSearchEnabled={true} />

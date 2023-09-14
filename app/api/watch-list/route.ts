@@ -14,7 +14,7 @@ export async function POST(
       return new NextResponse("Unauthorized", { status: 403 });
     }
     
-    const watchItem = await prismadb.watchList.create({
+    const newRecord = await prismadb.watchList.create({
       data: {
         status,
         watchId,
@@ -22,9 +22,32 @@ export async function POST(
       }
     });
   
-    return NextResponse.json(watchItem);
+    return NextResponse.json(newRecord);
   } catch (error) {
     console.log('watch-list_POST', error)
+    throw new NextResponse('Internal error', {status: 500})
+  }
+}
+
+export async function GET(
+  req: Request
+) {
+  try {
+    const { userId } = auth()
+
+    if (!userId) {
+      return new NextResponse("Unauthorized", { status: 403 });
+    }
+    
+    const records = await prismadb.watchList.findMany({
+      where: {
+        userId
+      }
+    });
+  
+    return NextResponse.json(records);
+  } catch (error) {
+    console.log('watch-list_GET', error)
     throw new NextResponse('Internal error', {status: 500})
   }
 }
