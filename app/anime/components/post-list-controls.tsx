@@ -34,20 +34,24 @@ export function PostListControls() {
   }, [params])
 
   return (
-    <div
-      className="
-        flex
-        justify-between
-        py-6
-        px-4
-        sm:px-6
-        lg:px-8
-    "
-    >
-      <PostListFilters onChange={onChangeHandler} />
-      <div className="ml-10">
-        <PostListSorter onChange={onChangeHandler} />
-      </div>
-    </div>
+    <>
+      {didMountRef.current && (
+        <div
+          className="
+            flex
+            justify-between
+            py-6
+            px-4
+            sm:px-6
+            lg:px-8
+          "
+        >
+          <PostListFilters onChange={onChangeHandler} />
+          <div className="ml-10">
+            <PostListSorter onChange={onChangeHandler} />
+          </div>
+        </div>
+      )}
+    </>
   )
 }

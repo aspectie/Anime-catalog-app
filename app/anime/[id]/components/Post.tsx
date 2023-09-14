@@ -65,6 +65,7 @@ export function Post({
     <>
       <div className="p-6 flex">
         <div className="basis-1/5">
+          {/* TODO: skeleton for image */}
           <img
             src={imgUrl}
             className="w-full"

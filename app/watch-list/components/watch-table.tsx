@@ -10,31 +10,37 @@ export function WatchTable({
   records: TWatchRecord[] | null
 }) {
   return (
-    <Table responsive>
-      <thead>
-        <tr>
-          {columns.map((column) => (
-            <th key={column.name}>{column.title}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {records &&
-          records.length > 0 &&
-          records.map((record) => (
-            <tr key={record.id}>
-              {columns.map((column) => {
-                return (
-                  column.name && (
-                    <td key={`${record.id}_${column.name}`}>
-                      {record[column.name]}
-                    </td>
-                  )
-                )
-              })}
+    <>
+      {records && records.length > 0 ? (
+        <Table responsive>
+          <thead>
+            <tr>
+              {columns.map((column) => (
+                <th key={column.name}>{column.title}</th>
+              ))}
             </tr>
-          ))}
-      </tbody>
-    </Table>
+          </thead>
+          <tbody>
+            {records.map((record) => (
+              <tr key={record.id}>
+                {columns.map((column) => {
+                  return (
+                    column.name && (
+                      <td key={`${record.id}_${column.name}`}>
+                        {record[column.name]}
+                      </td>
+                    )
+                  )
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      ) : (
+        <div className="text-center p-5">
+          <span className="text-xl">The table is empty</span>
+        </div>
+      )}
+    </>
   )
 }

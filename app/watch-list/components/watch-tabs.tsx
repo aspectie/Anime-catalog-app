@@ -81,6 +81,7 @@ export function WatchTabs() {
                 ))}
               </Row>
             </Nav>
+            {/* TODO: fix type */}
             <Tab.Content>
               {tabs.map(({ value }) => (
                 <Tab.Pane
