@@ -3,9 +3,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
 
-import { getPosts } from '@/lib/posts'
-import { PostListFilters } from './PostListFilters'
-import { PostListSorter } from './PostListSorter'
+import { getPosts } from '@/actions/get-posts'
+import { PostListFilters } from './post-list-filters'
+import { PostListSorter } from './post-list-sorters'
 
 export function PostListControls() {
   const [params, setParams] = useState({ limit: '20', order: 'ranked' })
@@ -34,20 +34,24 @@ export function PostListControls() {
   }, [params])
 
   return (
-    <div
-      className="
-        flex
-        justify-between
-        py-6
-        px-4
-        sm:px-6
-        lg:px-8
-    "
-    >
-      <PostListFilters onChange={onChangeHandler} />
-      <div className="ml-10">
-        <PostListSorter onChange={onChangeHandler} />
-      </div>
-    </div>
+    <>
+      {didMountRef.current && (
+        <div
+          className="
+            flex
+            justify-between
+            py-6
+            px-4
+            sm:px-6
+            lg:px-8
+          "
+        >
+          <PostListFilters onChange={onChangeHandler} />
+          <div className="ml-10">
+            <PostListSorter onChange={onChangeHandler} />
+          </div>
+        </div>
+      )}
+    </>
   )
 }

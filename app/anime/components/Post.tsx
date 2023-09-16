@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 
-import { TAnimeItem } from '@/types/AnimeItem'
+import { TAnimeItem } from '@/types/anime-item'
 
 export function Post({
   id,

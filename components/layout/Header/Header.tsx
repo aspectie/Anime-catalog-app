@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { BackButton } from './BackButton'
+import { BackButton } from './back-button'
 
 export function Header({
   children,

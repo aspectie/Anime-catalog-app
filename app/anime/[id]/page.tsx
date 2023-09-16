@@ -1,126 +1,37 @@
 import React from 'react'
 
 import { Header } from '@components'
+import { Post } from './components/post'
 
-import { getPostById } from '@/lib/posts'
+import { getPostById } from '@/actions/get-post-by-id'
 
-import { TAnimeItem } from '@/types/AnimeItem'
-
-export default async function Anime({
+export default async function AnimePage({
   params
 }: {
   params: {
     id: string
   }
 }) {
-  const {
-    name,
-    image,
-    russian,
-    genres,
-    episodes,
-    kind,
-    status,
-    score,
-    licensors,
-    description
-  }: TAnimeItem = await getPostById(params.id)
+  const post = await getPostById(Number(params.id))
 
-  const imgUrl = `https://shikimori.one/${image?.original}`
+  const imgUrl = `https://shikimori.one/${post?.image?.original}`
 
   return (
     <>
-      <Header isWithBackButton={true}>{name}</Header>
+      <Header isWithBackButton={true}>{post?.name}</Header>
       <div className="container">
-        <h2 className="p-6">{russian}</h2>
+        <h2 className="p-6">{post?.russian}</h2>
         <Post
+          id={Number(params.id)}
           imgUrl={imgUrl}
-          genres={genres}
-          episodes={episodes}
-          kind={kind}
-          status={status}
-          score={score}
-          licensors={licensors}
-          description={description}
+          genres={post?.genres}
+          episodes={post?.episodes}
+          kind={post?.kind}
+          status={post?.status}
+          score={post?.score}
+          licensors={post?.licensors}
+          description={post?.description}
         />
-      </div>
-    </>
-  )
-}
-
-const Post = ({
-  imgUrl,
-  genres,
-  episodes,
-  kind,
-  status,
-  score,
-  licensors,
-  description
-}: TAnimeItem & { imgUrl: string }) => {
-  return (
-    <>
-      <div className="p-6 flex">
-        <div className="basis-1/5">
-          <img
-            src={imgUrl}
-            className="w-full"
-          />
-        </div>
-        <div className="basis-4/5 ml-10">
-          <p className="mb-3">
-            <span className="mr-1">Genres:</span>
-            {genres?.map((genre, index) => {
-              return (
-                <span
-                  className="mr-1"
-                  key={genre.name}
-                >
-                  {genre.name}
-                  {genres.length - 1 !== index ? ',' : '.'}
-                </span>
-              )
-            })}
-          </p>
-          <p className="mb-3">
-            <span className="mr-1">Episodes:</span>
-            <span>{episodes}</span>
-          </p>
-          <p className="mb-3">
-            <span className="mr-1">Type:</span>
-            <span>{kind}</span>
-          </p>
-          <p className="mb-3">
-            <span className="mr-1">Status:</span>
-            <span>{status}</span>
-          </p>
-          <p className="mb-3">
-            <span className="mr-1">Score:</span>
-            <span>{score}</span>
-          </p>
-          {licensors && licensors.length > 0 && (
-            <p className="mb-3">
-              <span className="mr-1">Licensors:</span>
-              {licensors.map((licensor, index) => {
-                return (
-                  <span
-                    className="mr-1"
-                    key={licensor}
-                  >
-                    {licensor}
-                    {licensors.length - 1 !== index ? ',' : '.'}
-                  </span>
-                )
-              })}
-            </p>
-          )}
-        </div>
-      </div>
-      <div className="p-6">
-        <h3 className="mb-2 text-xl">Description:</h3>
-        <p className="mb-3">
-          <span>{description}</span>
-        </p>
       </div>
     </>
   )

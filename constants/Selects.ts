@@ -158,3 +158,34 @@ export const orderOptions: Array<TOption> = [
     title: 'Release date'
   }
 ]
+
+export const watchStatusOptions: Array<TOption> = [
+  {
+    value: '',
+    title: 'Add to list'
+  },
+  {
+    value: 'watched',
+    title: 'Watched'
+  },
+  {
+    value: 'watching',
+    title: 'Watching'
+  },
+  {
+    value: 'planned',
+    title: 'Planned'
+  },
+  {
+    value: 'rewatching',
+    title: 'Rewatching'
+  },
+  {
+    value: 'dropped',
+    title: 'Dropped'
+  },
+  {
+    value: 'on_hold',
+    title: 'On hold'
+  }
+]

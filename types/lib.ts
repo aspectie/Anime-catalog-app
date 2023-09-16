@@ -1,20 +1,20 @@
 type TAnimesApiParams = {
-  page?: number,
-  limit?: string,
-  order?: TOrderParam | string,
-  kind?: TKindParam | string,
-  status?: TStatusParam | string,
-  season?: TSeasonParam | string,
-  score?: number,
-  duration?: TDurationParam | string,
-  rating?: TRatingParam | string,
-  genre?: string,
-  studio?: string,
-  franchise?: string,
-  censored?: boolean,
-  ids?: string,
-  exclude_ids?: string,
-  search?: string
+  page?: number;
+  limit?: string;
+  order?: TOrderParam | string;
+  kind?: TKindParam | string;
+  status?: TStatusParam | string;
+  season?: TSeasonParam | string;
+  score?: number;
+  duration?: TDurationParam | string;
+  rating?: TRatingParam | string;
+  genre?: string;
+  studio?: string;
+  franchise?: string;
+  censored?: boolean;
+  ids?: string;
+  exclude_ids?: string;
+  search?: string;
 }
 
 type TOrderParam = 'id' | 'ranked' | 'kind' | 'popularity' | 'name' | 'aired_on' | 'episodes' | 'status' | 'random'

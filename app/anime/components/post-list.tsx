@@ -1,12 +1,13 @@
 'use client'
 
 import React, { useState } from 'react'
-
-import { Post } from './Post'
-
-import { getPosts } from '@/lib/posts'
-import { TAnimeItem } from '@/types/AnimeItem'
 import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query'
+
+import { TAnimeItem } from '@/types/anime-item'
+
+import { Post } from './post'
+
+import { getPosts } from '@/actions/get-posts'
 
 export function PostList() {
   const [currentPage, setCurrentPage] = useState(1)
@@ -23,8 +24,7 @@ export function PostList() {
     status: string
   } = useInfiniteQuery({
     queryKey: ['animePosts', 'infinite'],
-    queryFn: ({ pageParam = 1 }) => getPosts({ page: pageParam }),
-    getNextPageParam: (lastPage, pages) => lastPage.nextCursor
+    queryFn: ({ pageParam = 1 }) => getPosts({ page: pageParam })
   })
 
   if (status === 'error') {
