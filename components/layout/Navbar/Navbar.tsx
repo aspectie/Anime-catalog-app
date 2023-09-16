@@ -27,7 +27,7 @@ const navigation = [
     href: '/'
   },
   {
-    name: 'Anime',
+    name: 'Top animes',
     href: '/anime'
   },
   {

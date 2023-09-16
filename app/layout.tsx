@@ -17,7 +17,7 @@ export default function RootLayout({
       lang="en"
       className="h-full"
     >
-      <body className="h-full">
+      <body className="h-full bg-gray-800">
         <ClerkProvider>
           <Providers>{children}</Providers>
         </ClerkProvider>
