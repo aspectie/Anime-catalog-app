@@ -37,7 +37,7 @@ export function Post({
     <div
       ref={postRef}
       className="
-        hover:text-amber-600
+        hover:text-indigo-400
           hover:translate-y-2
         text-gray-300
           transition
@@ -57,7 +57,7 @@ export function Post({
                 w-full
                 h-full
                 absolute
-              bg-amber-300
+              bg-indigo-300
                 opacity-30
                 rounded-md
               "

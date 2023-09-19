@@ -38,7 +38,7 @@ export function WatchTable({
         </Table>
       ) : (
         <div className="text-center p-5">
-          <span className="text-xl">The table is empty</span>
+          <span className="text-white text-xl">The table is empty</span>
         </div>
       )}
     </>
