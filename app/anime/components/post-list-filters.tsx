@@ -37,7 +37,7 @@ export function PostListFilters({
   return (
     <>
       <div className="mb-4 text-xl">
-        <p className="mb-2 text-gray-900 font-medium">Season: </p>
+        <p className="mb-2 text-gray-900">Season: </p>
         <Select
           isMultiple
           options={Constants.seasonOptions}

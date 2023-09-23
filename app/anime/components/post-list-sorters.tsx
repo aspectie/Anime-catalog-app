@@ -18,14 +18,9 @@ export function PostListSorter({
   }
 
   return (
-    <div>
-      <span>Sort by:</span>
-      <div
-        className="
-          inline-block
-          ml-2
-      "
-      >
+    <div className="mb-4">
+      <p className="mb-2 text-gray-900 text-xl">Sort by:</p>
+      <div className="text-xl">
         <Select
           options={Constants.orderOptions}
           onChange={onChangeSelect}

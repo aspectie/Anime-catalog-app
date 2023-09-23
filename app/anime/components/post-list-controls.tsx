@@ -52,10 +52,8 @@ export function PostListControls() {
         >
           <div className="sticky top-6">
             <PostListFilters onChange={onChangeHandler} />
-          </div>
-          {/* <div className="ml-10">
             <PostListSorter onChange={onChangeHandler} />
-          </div> */}
+          </div>
         </div>
       )}
     </>

@@ -50,7 +50,7 @@ export function Post({
         href={`/anime/${id}`}
         className="h-full flex flex-col"
       >
-        <div className="relative">
+        <div className="relative 2xl:h-60 xl:h-48">
           {isHovered && (
             <div
               className="
@@ -87,20 +87,19 @@ export function Post({
             className="
               w-full
               h-full
-              max-h-full
+              object-cover
               border
               border-gray-800
               rounded-md
             "
           />
         </div>
-
         <p
           className="
-              mt-2
-              font-medium
-              text-inherit
-            "
+            mt-2
+            font-medium
+            text-inherit
+          "
         >
           {name}
         </p>

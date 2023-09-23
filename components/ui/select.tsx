@@ -26,7 +26,7 @@ export function Select({
   onRemove?: (selectedItems: Array<TOption>) => void
 }) {
   return (
-    <div>
+    <>
       {isMultiple ? (
         <Multiselect
           options={options}
@@ -42,8 +42,9 @@ export function Select({
       ) : (
         <Form.Select
           value={value}
-          size="sm"
+          size="lg"
           onChange={onChange}
+          bsPrefix="select"
         >
           {options.map((o) => {
             return (
@@ -57,6 +58,6 @@ export function Select({
           })}
         </Form.Select>
       )}
-    </div>
+    </>
   )
 }
