@@ -9,21 +9,19 @@ export default function AnimesPage() {
     <>
       <Navbar isSearchEnabled={true} />
       <Header>Top anime list</Header>
-      <div className="container">
+      <div className="container flex">
         <PostListControls />
         <div
           className="
-          grid
-          gap-10
-          xl:grid-cols-6
-          lg:grid-cols-4
-          md:grid-cols-2
-          sm:grid-cols-1
-          px-4
-          py-6
-          sm:px-6
-          lg:px-8
-        "
+            grid
+            gap-10
+            bg-gray-900
+            xl:grid-cols-5
+            lg:grid-cols-4
+            md:grid-cols-2
+            sm:grid-cols-1
+            p-14
+          "
         >
           <PostList />
         </div>

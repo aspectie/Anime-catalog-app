@@ -11,7 +11,7 @@ export function Search({
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
 }) {
   return (
-    <div>
+    <div className="w-96">
       <Form.Control
         placeholder={placeholder}
         onChange={onChange}

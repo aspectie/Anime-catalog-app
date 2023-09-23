@@ -19,8 +19,8 @@ export function BackButton() {
         mr-3
         py-1
         px-2
-        hover:bg-amber-600
-    "
+        hover:bg-indigo-400
+      "
     >
       <div className="flex text-3xl text-white">
         <FontAwesomeIcon icon={faChevronLeft} />

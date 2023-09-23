@@ -69,13 +69,18 @@ export function WatchTabs() {
           >
             <Nav
               variant="pills"
-              className="flex-column"
+              className="flex-column mb-8"
             >
               <Row>
                 {tabs.map(({ title, value }) => (
                   <Col key={value}>
                     <Nav.Item>
-                      <Nav.Link eventKey={value}>{title}</Nav.Link>
+                      <Nav.Link
+                        className="text-white"
+                        eventKey={value}
+                      >
+                        {title}
+                      </Nav.Link>
                     </Nav.Item>
                   </Col>
                 ))}

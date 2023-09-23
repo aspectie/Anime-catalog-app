@@ -44,7 +44,7 @@ export function PostList() {
     <>
       {data?.pages.map((group, i) => (
         <React.Fragment key={i}>
-          {group.map(
+          {group?.map(
             (
               { id, score, name, image, aired_on }: TAnimeItem,
               index: number

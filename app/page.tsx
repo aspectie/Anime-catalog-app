@@ -8,7 +8,7 @@ export default function HomePage() {
       <Header>Home</Header>
       <div className="container">
         <main className="p-6">
-          <h1>Home body</h1>
+          <h1 className="text-white">Home body</h1>
         </main>
       </div>
     </>

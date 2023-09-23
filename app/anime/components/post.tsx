@@ -37,45 +37,47 @@ export function Post({
     <div
       ref={postRef}
       className="
-      hover:text-amber-600
-      hover:translate-y-2
-      transition
-      duration-100"
+        hover:text-indigo-400
+          hover:translate-y-2
+        text-gray-300
+          transition
+          duration-100
+        "
       onMouseOver={() => setHovered(true)}
       onMouseOut={() => setHovered(false)}
     >
       <Link
         href={`/anime/${id}`}
-        className="h-full block"
+        className="h-full flex flex-col"
       >
-        <div className="relative">
+        <div className="relative 2xl:h-60 xl:h-48">
           {isHovered && (
             <div
               className="
-              w-full
-              h-full
-              absolute
-              bg-amber-600
-              opacity-30
-              rounded-md
-            "
+                w-full
+                h-full
+                absolute
+              bg-indigo-300
+                opacity-30
+                rounded-md
+              "
             ></div>
           )}
           <span
             className="
-            absolute
-            bottom-0
-            rounded-bl-md
-            h-12
-            w-16
-            opacity-95
-            bg-amber-400
-            text-white
-            text-2xl
-            flex
-            items-center
-            justify-center
-          "
+              absolute
+              bottom-0
+              rounded-bl-md
+              h-12
+              w-16
+              opacity-95
+              bg-indigo-500
+              text-white
+              text-2xl
+              flex
+              items-center
+              justify-center
+            "
           >
             {score}
           </span>
@@ -84,26 +86,30 @@ export function Post({
             alt={name}
             className="
               w-full
-              h-fit
+              h-full
+              object-cover
               border
               border-gray-800
               rounded-md
-          "
+            "
           />
         </div>
         <p
           className="
-          mt-2
-          font-medium
-        "
+            mt-2
+            font-medium
+            text-inherit
+          "
         >
           {name}
         </p>
+
         {year && (
           <p
             className="
-          font-normal
-        "
+              font-normal
+              text-inherit
+            "
           >
             ({year.getFullYear()})
           </p>

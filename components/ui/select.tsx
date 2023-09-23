@@ -6,6 +6,8 @@ import { Multiselect } from 'multiselect-react-dropdown'
 
 export function Select({
   options,
+  style,
+  className,
   isMultiple,
   placeholder,
   value,
@@ -16,18 +18,22 @@ export function Select({
   options: Array<TOption>
   isMultiple?: boolean
   placeholder?: string
+  style?: object
+  className?: string
   value?: string | number | string[]
   onChange?: React.ChangeEventHandler<HTMLSelectElement>
   onSelect?: (selectedItems: Array<TOption>) => void
   onRemove?: (selectedItems: Array<TOption>) => void
 }) {
   return (
-    <div>
+    <>
       {isMultiple ? (
         <Multiselect
           options={options}
           onSelect={onSelect}
           onRemove={onRemove}
+          style={style}
+          className={className}
           displayValue="title"
           avoidHighlightFirstOption
           closeIcon="cancel"
@@ -36,8 +42,9 @@ export function Select({
       ) : (
         <Form.Select
           value={value}
-          size="sm"
+          size="lg"
           onChange={onChange}
+          bsPrefix="select"
         >
           {options.map((o) => {
             return (
@@ -51,6 +58,6 @@ export function Select({
           })}
         </Form.Select>
       )}
-    </div>
+    </>
   )
 }

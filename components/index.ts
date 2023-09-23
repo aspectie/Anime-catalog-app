@@ -1,8 +1,8 @@
 import { Select } from './ui/select';
 import { Search } from './ui/search';
-import { Navbar } from './layout/Navbar/navbar';
-import { BackButton } from "./layout/Header/back-button";
-import { Header } from "./layout/Header/header";
+import { Navbar } from './layout/navbar/navbar';
+import { BackButton } from "./layout/header/back-button";
+import { Header } from "./layout/header/header";
 
 export {
   BackButton,

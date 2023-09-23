@@ -63,7 +63,7 @@ export function Post({
 
   return (
     <>
-      <div className="p-6 flex">
+      <div className="p-6 flex bg-amber-300 rounded mx-6 text-gray-900">
         <div className="basis-1/5">
           {/* TODO: skeleton for image */}
           <img

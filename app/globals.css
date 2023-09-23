@@ -1,5 +1,45 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import "~bootstrap/dist/css/bootstrap.min.css";
+/* TODO: refactor styles and fix options padding for multiselect*/
+body {
+  font-family: sans-serif;
+}
+
+.postFilter .searchBox::placeholder {
+  color: white;
+}
+
+.postFilter .searchBox {
+  color: white;
+  margin-top: 0;
+  padding: 6px;
+}
+
+.postFilter .optionListContainer {
+  background: #111827;
+  color: white;
+}
+
+.postFilter .searchWrapper {
+  border: 0;
+  background: #111827;
+  color: white;
+}
+.select {
+  border: 0;
+  background: #111827;
+  color: white;
+  padding: 13px 8px;
+  width: 100%;
+  min-height: 22px;
+  cursor: pointer;
+  border-radius: 4px;
+  outline: none;
+}
+
+.select option {
+  padding: 20px;
+}

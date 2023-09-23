@@ -10,6 +10,7 @@ import { PostListSorter } from './post-list-sorters'
 export function PostListControls() {
   const [params, setParams] = useState({ limit: '20', order: 'ranked' })
   const queryClient = useQueryClient()
+  const [isMounted, setIsMounted] = useState(false)
 
   const didMountRef = useRef(false)
 
@@ -31,23 +32,26 @@ export function PostListControls() {
     }
 
     didMountRef.current = true
+    setIsMounted(true)
   }, [params])
 
   return (
     <>
-      {didMountRef.current && (
+      {isMounted && (
         <div
           className="
-            flex
-            justify-between
+            border-l-2
+            border-l-black
             py-6
             px-4
+            ml-6
             sm:px-6
             lg:px-8
+            bg-amber-300
           "
         >
-          <PostListFilters onChange={onChangeHandler} />
-          <div className="ml-10">
+          <div className="sticky top-6">
+            <PostListFilters onChange={onChangeHandler} />
             <PostListSorter onChange={onChangeHandler} />
           </div>
         </div>

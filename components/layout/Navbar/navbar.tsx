@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
+import { useParams, usePathname } from 'next/navigation'
 import { useQueryClient } from '@tanstack/react-query'
 import {
   SignInButton,
@@ -27,7 +27,7 @@ const navigation = [
     href: '/'
   },
   {
-    name: 'Anime',
+    name: 'Top animes',
     href: '/anime'
   },
   {
@@ -76,16 +76,15 @@ export function Navbar({ isSearchEnabled }: { isSearchEnabled?: boolean }) {
             <Link
               key={item.name}
               href={item.href}
-              className="
+              className={`${usePathname() == item.href ? 'text-amber-300' : ''}
                 px-3
                 py-2
                 text-gray-300
                 text-sm
                 font-medium
                 rounded-md
-                hover:bg-gray-700
-                hover:text-amber-400
-              "
+                hover:bg-indigo-400
+                hover:text-white`}
             >
               {item.name}
             </Link>
@@ -110,11 +109,11 @@ function AuthControls() {
         <SignInButton mode="modal">
           <button
             className="
-                  text-gray-300 
-                  text-sm
-                  font-medium
-                  hover:text-amber-400
-                "
+              text-gray-300 
+              text-sm
+              font-medium
+              hover:text-amber-400
+            "
           >
             Sign in
           </button>
@@ -122,12 +121,12 @@ function AuthControls() {
         <SignUpButton mode="modal">
           <button
             className="
-                  ml-4
-                  text-gray-300 
-                  text-sm
-                  font-medium
-                  hover:text-amber-400
-                "
+              ml-4
+              text-gray-300 
+              text-sm
+              font-medium
+              hover:text-amber-400
+            "
           >
             Sign up
           </button>

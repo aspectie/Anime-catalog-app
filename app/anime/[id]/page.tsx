@@ -19,7 +19,7 @@ export default async function AnimePage({
   return (
     <>
       <Header isWithBackButton={true}>{post?.name}</Header>
-      <div className="container">
+      <div className="container text-gray-300">
         <h2 className="p-6">{post?.russian}</h2>
         <Post
           id={Number(params.id)}
