@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { FC, ReactNode } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Col, Nav, Row, Tab } from 'react-bootstrap'
 
@@ -15,20 +15,37 @@ import { getWatchList } from '@/actions/get-watch-list'
 import { WatchTable } from './watch-table'
 
 export type TWatchColumnName =
-  | keyof Omit<TAnimeItem, 'image' | 'genres' | 'licensors'>
+  | keyof Omit<TAnimeItem, 'genres' | 'licensors'>
   | 'watchStatus'
 
-export type TWatchColumn = TColumn<{ name: TWatchColumnName; title: string }>
+export type TWatchColumnType = 'image' | 'default'
+
+export type TWatchColumn = TColumn<{
+  name: TWatchColumnName
+  title: string
+  type: TWatchColumnType
+  renderer: (src: string) => React.JSX.Element
+}>
 export type TWatchRecord = TAnimeItem & { watchStatus: TWatchStatus }
 
 const columns: TWatchColumn[] = [
   {
+    name: 'image',
+    title: 'Thumbnail',
+    type: 'image',
+    renderer: (src) => <img src={src} />
+  },
+  {
     name: 'name',
-    title: 'Title'
+    title: 'Title',
+    type: 'default',
+    renderer: (value) => <span>{value}</span>
   },
   {
     name: 'watchStatus',
-    title: 'Status'
+    title: 'Status',
+    type: 'default',
+    renderer: (value) => <span>{value}</span>
   }
 ]
 

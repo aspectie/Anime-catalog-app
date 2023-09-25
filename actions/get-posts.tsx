@@ -1,6 +1,6 @@
+import { baseApiURL } from '@/constants/api'
 import { TAnimeItem } from '@/types/anime-item'
 
-const baseURL = 'https://shikimori.one/api'
 const defaultParams = {
   limit: '20',
   order: 'ranked'
@@ -9,7 +9,7 @@ const defaultParams = {
 export async function getPosts(
   params?: Record<string, string>
 ): Promise<TAnimeItem[] | null> {
-  const url = new URL(`${baseURL}/animes`)
+  const url = new URL(`${baseApiURL}/animes`)
 
   if (!params) {
     params = defaultParams
