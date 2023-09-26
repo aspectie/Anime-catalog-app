@@ -1,7 +1,7 @@
 import { Table } from 'react-bootstrap'
 
 import { TWatchColumn, TWatchRecord } from './watch-tabs'
-import { baseURL } from '@/constants/api'
+import { TableCell } from './watch-cell'
 
 export function WatchTable({
   columns,
@@ -27,7 +27,7 @@ export function WatchTable({
                 {columns.map((column) => {
                   return (
                     column.name && (
-                      <Cell
+                      <TableCell
                         key={`${record.id}_${column.name}`}
                         column={column}
                         record={record}
@@ -46,27 +46,4 @@ export function WatchTable({
       )}
     </>
   )
-}
-
-function Cell({
-  column,
-  record
-}: {
-  column: TWatchColumn
-  record: TWatchRecord
-}) {
-  let value
-
-  switch (column.type) {
-    case 'image': {
-      value = baseURL + String(record.image?.x48)
-      break
-    }
-    case 'default': {
-      value = String(record[column.name])
-      break
-    }
-  }
-
-  return <td>{column.renderer(value)}</td>
 }

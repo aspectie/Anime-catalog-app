@@ -24,7 +24,7 @@ export type TWatchColumn = TColumn<{
   name: TWatchColumnName
   title: string
   type: TWatchColumnType
-  renderer: (src: string) => React.JSX.Element
+  renderer: ({}: Record<string, string>) => React.JSX.Element
 }>
 export type TWatchRecord = TAnimeItem & { watchStatus: TWatchStatus }
 
@@ -33,19 +33,19 @@ const columns: TWatchColumn[] = [
     name: 'image',
     title: 'Thumbnail',
     type: 'image',
-    renderer: (src) => <img src={src} />
+    renderer: ({ url }) => <img src={url} />
   },
   {
     name: 'name',
     title: 'Title',
     type: 'default',
-    renderer: (value) => <span>{value}</span>
+    renderer: ({ text }) => <span>{text}</span>
   },
   {
     name: 'watchStatus',
     title: 'Status',
     type: 'default',
-    renderer: (value) => <span>{value}</span>
+    renderer: ({ text }) => <span>{text}</span>
   }
 ]
 
