@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FC, ReactNode } from 'react'
+import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Col, Nav, Row, Tab } from 'react-bootstrap'
 
@@ -24,6 +24,7 @@ export type TWatchColumn = TColumn<{
   name: TWatchColumnName
   title: string
   type: TWatchColumnType
+  classNames: string
   renderer: ({}: Record<string, string>) => React.JSX.Element
 }>
 export type TWatchRecord = TAnimeItem & { watchStatus: TWatchStatus }
@@ -33,18 +34,40 @@ const columns: TWatchColumn[] = [
     name: 'image',
     title: 'Thumbnail',
     type: 'image',
-    renderer: ({ url }) => <img src={url} />
+    classNames: 'w-48',
+    renderer: ({ url }) => (
+      <img
+        src={url}
+        className="m-auto"
+      />
+    )
   },
   {
     name: 'name',
     title: 'Title',
     type: 'default',
+    classNames: 'w-2/5',
+    renderer: ({ text }) => <span>{text}</span>
+  },
+  {
+    name: 'score',
+    title: 'Rating',
+    type: 'default',
+    classNames: 'w-32',
+    renderer: ({ text }) => <span>{text}</span>
+  },
+  {
+    name: 'kind',
+    title: 'Type',
+    type: 'default',
+    classNames: 'w-32',
     renderer: ({ text }) => <span>{text}</span>
   },
   {
     name: 'watchStatus',
     title: 'Status',
     type: 'default',
+    classNames: '',
     renderer: ({ text }) => <span>{text}</span>
   }
 ]
