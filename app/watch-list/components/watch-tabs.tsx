@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { ChangeEventHandler } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Col, Nav, Row, Tab } from 'react-bootstrap'
 
@@ -8,24 +8,33 @@ import { TColumn } from '@/types/ui'
 import { TAnimeItem } from '@/types/anime-item'
 import { TWatchStatus } from '@/types/watch-item'
 
-import { tabs } from '@/constants/tabs'
+import { Constants } from '@/constants'
 
 import { getPostById } from '@/actions/get-post-by-id'
 import { getWatchList } from '@/actions/get-watch-list'
+
+import { Select } from '@/components'
 import { WatchTable } from './watch-table'
 
-export type TWatchColumnName =
+type TWatchColumnName =
   | keyof Omit<TAnimeItem, 'genres' | 'licensors'>
   | 'watchStatus'
 
-export type TWatchColumnType = 'image' | 'default'
+type TWatchColumnType = 'image' | 'default' | 'select'
+
+export type RendererParams = {
+  url: string
+  text: string
+  status: string
+  onChange: ChangeEventHandler<HTMLSelectElement>
+}
 
 export type TWatchColumn = TColumn<{
   name: TWatchColumnName
   title: string
   type: TWatchColumnType
   classNames: string
-  renderer: ({}: Record<string, string>) => React.JSX.Element
+  renderer: ({}: Partial<RendererParams>) => React.JSX.Element
 }>
 export type TWatchRecord = TAnimeItem & { watchStatus: TWatchStatus }
 
@@ -66,9 +75,17 @@ const columns: TWatchColumn[] = [
   {
     name: 'watchStatus',
     title: 'Status',
-    type: 'default',
+    type: 'select',
     classNames: '',
-    renderer: ({ text }) => <span>{text}</span>
+    renderer: ({ status, onChange }) => {
+      return (
+        <Select
+          value={status ? status : ''}
+          options={Constants.watchStatusOptions}
+          onChange={onChange}
+        />
+      )
+    }
   }
 ]
 
@@ -112,7 +129,7 @@ export function WatchTabs() {
               className="flex-column mb-8"
             >
               <Row>
-                {tabs.map(({ title, value }) => (
+                {Constants.watchItemsTabs.map(({ title, value }) => (
                   <Col key={value}>
                     <Nav.Item>
                       <Nav.Link
@@ -128,7 +145,7 @@ export function WatchTabs() {
             </Nav>
             {/* TODO: fix type */}
             <Tab.Content>
-              {tabs.map(({ value }) => (
+              {Constants.watchItemsTabs.map(({ value }) => (
                 <Tab.Pane
                   eventKey={value}
                   key={value}
