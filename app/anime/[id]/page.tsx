@@ -3,6 +3,8 @@ import React from 'react'
 import { Header } from '@components'
 import { Post } from './components/post'
 
+import { baseURL } from '@/constants/api'
+
 import { getPostById } from '@/actions/get-post-by-id'
 
 export default async function AnimePage({
@@ -14,7 +16,7 @@ export default async function AnimePage({
 }) {
   const post = await getPostById(Number(params.id))
 
-  const imgUrl = `https://shikimori.one/${post?.image?.original}`
+  const imgUrl = `${baseURL}/${post?.image?.original}`
 
   return (
     <>
