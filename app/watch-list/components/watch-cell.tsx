@@ -8,6 +8,7 @@ import { TWatchRecord } from '@/types/watch-item'
 import { TWatchColumn, RendererParams } from './watch-tabs'
 
 import { baseURL } from '@/constants/api'
+import { useRouter } from 'next/navigation'
 
 export function TableCell({
   column,
@@ -18,40 +19,30 @@ export function TableCell({
 }) {
   const value = useRef<Partial<RendererParams>>({})
   const { user } = useUser()
-  const queryClient = useQueryClient()
+  const router = useRouter()
   const id = record.id
 
   // TODO: refactor duplicate code
-
-  const mutation = useMutation(
-    (status: string) => {
-      const userId = user?.id
-      const postObj = { status, userId }
-      let requestInit = {}
-
-      if (status.length > 0) {
-        requestInit = {
-          method: 'PUT',
-          body: JSON.stringify(postObj)
-        }
-      } else {
-        requestInit = {
-          method: 'DELETE'
-        }
-      }
-      return fetch(`/api/watch-list/${id}`, requestInit)
-    },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries([`watchRecords`])
-      }
-    }
-  )
-
   const onChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
     const status = event.target.value
 
-    mutation.mutate(status)
+    const userId = user?.id
+    const postObj = { status, userId }
+    let requestInit = {}
+
+    if (status.length > 0) {
+      requestInit = {
+        method: 'PUT',
+        body: JSON.stringify(postObj)
+      }
+    } else {
+      requestInit = {
+        method: 'DELETE'
+      }
+    }
+
+    await fetch(`/api/watch-list/${id}`, requestInit)
+    router.refresh()
   }
 
   switch (column.type) {

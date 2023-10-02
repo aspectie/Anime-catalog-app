@@ -1,7 +1,8 @@
 import { Table } from 'react-bootstrap'
 
-import { TWatchColumn, TWatchRecord } from './watch-tabs'
+import { TWatchColumn } from './watch-tabs'
 import { TableCell } from './watch-cell'
+import { TWatchRecord } from '@/types/watch-item'
 
 export function WatchTable({
   columns,
