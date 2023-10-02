@@ -1,17 +1,13 @@
 'use client'
 
 import React, { ChangeEventHandler } from 'react'
-import { useQuery } from '@tanstack/react-query'
 import { Col, Nav, Row, Tab } from 'react-bootstrap'
 
 import { TColumn } from '@/types/ui'
 import { TAnimeItem } from '@/types/anime-item'
-import { TWatchStatus } from '@/types/watch-item'
+import { TWatchRecord } from '@/types/watch-item'
 
 import { Constants } from '@/constants'
-
-import { getPostById } from '@/actions/get-post-by-id'
-import { getWatchList } from '@/actions/get-watch-list'
 
 import { Select } from '@/components'
 import { WatchTable } from './watch-table'
@@ -36,7 +32,6 @@ export type TWatchColumn = TColumn<{
   classNames: string
   renderer: ({}: Partial<RendererParams>) => React.JSX.Element
 }>
-export type TWatchRecord = TAnimeItem & { watchStatus: TWatchStatus }
 
 const columns: TWatchColumn[] = [
   {
@@ -89,83 +84,60 @@ const columns: TWatchColumn[] = [
   }
 ]
 
-export function WatchTabs() {
-  async function getWatchRecords() {
-    const watchItems = await getWatchList()
-
-    if (!watchItems) {
-      return
-    }
-
-    return Promise.all(
-      watchItems.map(async (item) => {
-        const post = await getPostById(item.watchId)
-
-        return { ...post, watchStatus: item.status }
-      })
-    )
-  }
-
-  const { data, isFetched } = useQuery({
-    queryKey: [`watchRecords`],
-    queryFn: () => getWatchRecords()
-  })
-
+export function WatchTabs({ data }: { data: TWatchRecord[] }) {
   return (
     <>
-      {isFetched ? (
-        <div
-          className="
+      (
+      <div
+        className="
             px-4
             py-6
           "
+      >
+        <Tab.Container
+          defaultActiveKey="watched"
+          id="uncontrolled-tab-example"
         >
-          <Tab.Container
-            defaultActiveKey="watched"
-            id="uncontrolled-tab-example"
+          <Nav
+            variant="pills"
+            className="flex-column mb-8"
           >
-            <Nav
-              variant="pills"
-              className="flex-column mb-8"
-            >
-              <Row>
-                {Constants.watchItemsTabs.map(({ title, value }) => (
-                  <Col key={value}>
-                    <Nav.Item>
-                      <Nav.Link
-                        className="text-white"
-                        eventKey={value}
-                      >
-                        {title}
-                      </Nav.Link>
-                    </Nav.Item>
-                  </Col>
-                ))}
-              </Row>
-            </Nav>
-            {/* TODO: fix type */}
-            <Tab.Content>
-              {Constants.watchItemsTabs.map(({ value }) => (
-                <Tab.Pane
-                  eventKey={value}
-                  key={value}
-                >
-                  <WatchTable
-                    columns={columns}
-                    records={
-                      data
-                        ? data.filter((rec) => rec.watchStatus === value)
-                        : null
-                    }
-                  />
-                </Tab.Pane>
+            <Row>
+              {Constants.watchItemsTabs.map(({ title, value }) => (
+                <Col key={value}>
+                  <Nav.Item>
+                    <Nav.Link
+                      className="text-white"
+                      eventKey={value}
+                    >
+                      {title}
+                    </Nav.Link>
+                  </Nav.Item>
+                </Col>
               ))}
-            </Tab.Content>
-          </Tab.Container>
-        </div>
-      ) : (
-        'loading..'
-      )}
+            </Row>
+          </Nav>
+          {/* TODO: fix type */}
+          <Tab.Content>
+            {Constants.watchItemsTabs.map(({ value }) => (
+              <Tab.Pane
+                eventKey={value}
+                key={value}
+              >
+                <WatchTable
+                  columns={columns}
+                  records={
+                    data
+                      ? data.filter((rec) => rec.watchStatus === value)
+                      : null
+                  }
+                />
+              </Tab.Pane>
+            ))}
+          </Tab.Content>
+        </Tab.Container>
+      </div>
+      )
     </>
   )
 }

@@ -1,10 +1,13 @@
 'use client'
 
-import { baseURL } from '@/constants/api'
-import { TWatchColumn, TWatchRecord, RendererParams } from './watch-tabs'
 import { useRef } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useUser } from '@clerk/nextjs'
+
+import { TWatchRecord } from '@/types/watch-item'
+import { TWatchColumn, RendererParams } from './watch-tabs'
+
+import { baseURL } from '@/constants/api'
 
 export function TableCell({
   column,

@@ -1,12 +1,31 @@
-import { TWatchItem } from '@/types/watch-item'
+import prismadb from '@/lib/prismadb'
+import { auth } from '@clerk/nextjs'
+import { getPostById } from './get-post-by-id'
+import { TWatchRecord } from '@/types/watch-item'
 
-export async function getWatchList(): Promise<TWatchItem[] | null> {
-  const URL = `${process.env.NEXT_PUBLIC_API_URL}/api/watch-list/`
-  const res = await fetch(URL)
+export async function getWatchList(): Promise<TWatchRecord[]> {
+  const { userId } = auth()
 
-  if (res.status !== 200) {
-    return null
+  if (!userId) {
+    return []
   }
 
-  return res.json()
+  const watchItems = await prismadb.watchList.findMany({
+    where: {
+      userId
+    }
+  })
+
+  if (!watchItems) {
+    return []
+  }
+  const data = (await Promise.all(
+    watchItems.map(async (item) => {
+      const post = await getPostById(item.watchId)
+
+      return { ...post, watchStatus: item.status }
+    })
+  )) as TWatchRecord[]
+
+  return data
 }
