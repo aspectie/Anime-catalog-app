@@ -31,26 +31,3 @@ export async function POST(
     throw new NextResponse('Internal error', { status: 500 })
   }
 }
-
-export async function GET(
-  req: Request
-) {
-  try {
-    const { userId } = auth()
-
-    if (!userId) {
-      return new NextResponse("Unauthorized", { status: 403 });
-    }
-    
-    const records = await prismadb.watchList.findMany({
-      where: {
-        userId
-      }
-    });
-  
-    return NextResponse.json(records);
-  } catch (error) {
-    console.log('watch-list_GET', error)
-    throw new NextResponse('Internal error', { status: 500 })
-  }
-}

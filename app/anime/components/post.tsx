@@ -5,6 +5,8 @@ import Link from 'next/link'
 
 import { TAnimeItem } from '@/types/anime-item'
 
+import { baseURL } from '@/constants/api'
+
 export function Post({
   id,
   score,
@@ -17,7 +19,7 @@ export function Post({
   const [isHovered, setHovered] = useState(false)
   const postRef = useRef(null)
 
-  const imgUrl = `https://shikimori.one/${image?.original}`
+  const imgUrl = `${baseURL}/${image?.original}`
   const year = aired_on ? new Date(aired_on) : null
 
   useEffect(() => {

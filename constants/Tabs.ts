@@ -1,7 +1,7 @@
 import { TWatchStatus } from "@/types/watch-item";
 import { TTab } from "@/types/ui";
 
-export const tabs: TTab<{ value: TWatchStatus; title: string }>[] = [
+export const watchItemsTabs: TTab<{ value: TWatchStatus; title: string }>[] = [
   {
     value: 'watched',
     title: 'Watched'

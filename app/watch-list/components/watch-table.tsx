@@ -1,6 +1,8 @@
 import { Table } from 'react-bootstrap'
 
-import { TWatchColumn, TWatchRecord } from './watch-tabs'
+import { TWatchColumn } from './watch-tabs'
+import { TableCell } from './watch-cell'
+import { TWatchRecord } from '@/types/watch-item'
 
 export function WatchTable({
   columns,
@@ -12,11 +14,19 @@ export function WatchTable({
   return (
     <>
       {records && records.length > 0 ? (
-        <Table responsive>
+        <Table
+          responsive
+          className="text-center text-lg align-middle"
+        >
           <thead>
             <tr>
               {columns.map((column) => (
-                <th key={column.name}>{column.title}</th>
+                <th
+                  key={column.name}
+                  className={column.classNames}
+                >
+                  {column.title}
+                </th>
               ))}
             </tr>
           </thead>
@@ -26,9 +36,11 @@ export function WatchTable({
                 {columns.map((column) => {
                   return (
                     column.name && (
-                      <td key={`${record.id}_${column.name}`}>
-                        {record[column.name]}
-                      </td>
+                      <TableCell
+                        key={`${record.id}_${column.name}`}
+                        column={column}
+                        record={record}
+                      />
                     )
                   )
                 })}
